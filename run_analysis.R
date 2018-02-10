@@ -21,11 +21,12 @@ featuresData <- fread(featuresFile, col.names = c("featureId", "featureName"))
 featuresFiltered <- grep("(mean|std)\\(\\)", featuresData[, featureName])
 measurementsFiltered <- featuresData[featuresFiltered, featureName]
 
-
 # Load Train Data
 trainXFile <- file.path(getwd(), "UCI HAR Dataset/train/X_train.txt")
 trainXData <- fread(trainXFile)
 trainXFiltered <- trainXData[, featuresFiltered, with = FALSE]
+
+data.table::setnames(trainXFiltered, colnames(trainXFiltered), measurementsFiltered)
 
 trainYFile <- file.path(getwd(), "UCI HAR Dataset/train/Y_train.txt")
 trainYData <- fread(trainYFile, col.names = "activity")
@@ -33,7 +34,7 @@ trainYData <- fread(trainYFile, col.names = "activity")
 trainSubjectFile <- file.path(getwd(), "UCI HAR Dataset/train/subject_train.txt")
 trainSubject <- fread(trainSubjectFile, col.names = c("subject"))
 
-trains <- cbind(trainSubject, trainYData, trainXData)
+trains <- cbind(trainSubject, trainYData, trainXFiltered)
 
 # Load Test Data
 testXFile <- file.path(getwd(), "UCI HAR Dataset/test/X_test.txt")
@@ -48,7 +49,7 @@ testYData <- fread(testYFile, col.names = "activity")
 testSubjectFile <- file.path(getwd(), "UCI HAR Dataset/test/subject_test.txt")
 testSubjectData <- fread(testSubjectFile, col.names = c("subject"))
 
-tests <- cbind(testSubjectData, testYData, testXData)
+tests <- cbind(testSubjectData, testYData, testXFiltered)
 
 # Merge Train and Test Data. Replace with actual Activity Names
 mergedTrainTestData <- rbind(trains, tests)
