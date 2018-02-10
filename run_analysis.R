@@ -3,9 +3,9 @@ library("reshape2")
 
 # Prepare Data
 ## Download dataset
-#download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", file.path(getwd(), "dataFiles.zip"))
+download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", file.path(getwd(), "dataFiles.zip"))
 ## Unzip zipped file
-#unzip(zipfile = "dataFiles.zip")
+unzip(zipfile = "dataFiles.zip")
 
 # Read and Filter Data
 ## Read Activity Labels Data
