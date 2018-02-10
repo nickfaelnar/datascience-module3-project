@@ -17,4 +17,4 @@ The training and test data were merged into one data set given that only the mea
 For each record in the dataset it is provided:
 * subject - Identifier of the subject who carried out the experiment 
 * activity - Activity performed (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) 
-* V1 ~ V561 - A 561-feature vector with time and frequency domain variables. This shows the average value of the feature vector for each subject on each activity. 
+* Succeeding Columns - A 561-feature vector with time and frequency domain variables. This shows the average value of the feature vector for each subject on each activity. 
