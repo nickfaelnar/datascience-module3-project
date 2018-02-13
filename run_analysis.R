@@ -61,4 +61,4 @@ tidyData <- data.table::copy(mergedTrainTestData)
 tidyData <- reshape2::melt(data = tidyData, id = c("subject", "activity"))
 tidyData <- reshape2::dcast(data = tidyData, subject + activity ~ variable, fun.aggregate = mean)
 
-data.table::fwrite(x = tidyData, file = "tidyData.csv", quote = FALSE)
+data.table::fwrite(x = tidyData, file = "tidyData.txt", quote = FALSE)
